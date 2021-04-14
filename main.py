@@ -6,15 +6,14 @@ from spotipy.oauth2 import SpotifyOAuth
 date = input("Which year do you want to travel to? Type the date in this format YYYY-MM-DD: ")
 
 # CONSTANTS
-SPOTIFY_CLIENT_ID = "50ad5a09cef74ab09236a22bc198d398"
-SPOTIFY_CLIENT_SECRET_ID = "93385470a0c842799d2f055dd25a6c7b"
+SPOTIFY_CLIENT_ID = "YOUR CLIENT ID"
+SPOTIFY_CLIENT_SECRET_ID = "YOUR CLIENT SECRET ID"
 URL = f"https://www.billboard.com/charts/hot-100/{date}"
 
 
 # ---------------------- Scraping Billboard 100 ----------------------
 response = requests.get(URL)
 billboard_website = response.text
-# print(billboard_website)
 
 soup = BeautifulSoup(billboard_website, "html.parser")
 # print(soup.prettify())
@@ -47,7 +46,7 @@ sp = spotipy.Spotify(
         client_id=SPOTIFY_CLIENT_ID,
         client_secret=SPOTIFY_CLIENT_SECRET_ID,
         show_dialog=True,
-        cache_path="token.txt"
+        cache_path="token.txt" #You get this file once you follow through the authentication process https://spotipy.readthedocs.io/
     )
 )
 user_id = sp.current_user()["id"]
